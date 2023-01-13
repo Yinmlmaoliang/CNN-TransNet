@@ -68,9 +68,9 @@ class FeedForward(nn.Module):
         return out
 
 
-class Transformer(nn.Module):
+class TransformerEncoder(nn.Module):
     def __init__(self, dim, depth, heads, dim_head, mlp_dim, dropout):
-        super(Transformer, self).__init__()
+        super(TransformerEncoder, self).__init__()
         self.layers = nn.ModuleList([])
         for _ in range(depth):
             self.layers.append(nn.ModuleList([
@@ -85,15 +85,15 @@ class Transformer(nn.Module):
             return x
 
 
-class Vit(nn.Module):
+class Transformer(nn.Module):
     def __init__(self, length,  num_classes, dim, depth, heads, mlp_dim, pool='cls',
                  dim_head=64, dropout=0., emb_dropout=0.):
-        super(Vit, self).__init__()
+        super(Transformer, self).__init__()
 
         self.pos_embedding = nn.Parameter(torch.randn(1, length + 1, dim))
         self.cls_token = nn.Parameter(torch.randn(1, 1, dim))
         self.dropout = nn.Dropout(emb_dropout)
-        self.transformer = Transformer(dim, depth, heads, dim_head, mlp_dim, dropout)
+        self.transformer = TransformerEncoder(dim, depth, heads, dim_head, mlp_dim, dropout)
 
         self.pool = pool
         self.to_latent = nn.Identity()

@@ -82,7 +82,7 @@ class ResNet(nn.Module):
         return conv1, res1, res2, res3, res4
 
 
-def resnet18_rgb(pretrained=True):
+def extraction_rgb(pretrained=True):
     # trained(bool): if True, returns a model pre-trained om ImageNet
     model = ResNet(BasicBlock, [2, 2, 2, 2])
     model_path = 'resnet18-5c106cde.pth'
