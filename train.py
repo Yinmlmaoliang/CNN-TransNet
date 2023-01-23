@@ -80,13 +80,12 @@ def main(args):
             print('Evaluating...')
             model.eval()
             test_stats = evaluate(val_data, model, device)
+            print(f"Accuracy of the network on the {len(val_dataset)} test images: {test_stats['acc1']:.1f}%")
+
             if log_writer is not None:
                 log_writer.add_scalar('perf/test_acc1', test_stats['acc1'], epoch)
                 log_writer.add_scalar('perf/test_acc5', test_stats['acc5'], epoch)
                 log_writer.add_scalar('perf/test_loss', test_stats['loss'], epoch)
-            with open('sun_seed.txt', mode='a') as f:
-                f.write(f'Epoch: {epoch} -- Acc1: {test_stats["acc1"]:.3f}%--')
-                f.close()
 
         model.train()
         print('Training...')
@@ -103,18 +102,11 @@ def main(args):
             model.eval()
             test_stats = evaluate(val_data, model, device)
             print(f"Accuracy of the network on the {len(val_dataset)} test images: {test_stats['acc1']:.1f}%")
-            acc.append(test_stats['acc1'])
-            max_acc1 = max(acc)
+
             if log_writer is not None:
                 log_writer.add_scalar('perf/test_acc1', test_stats['acc1'], epoch)
                 log_writer.add_scalar('perf/test_acc5', test_stats['acc5'], epoch)
                 log_writer.add_scalar('perf/test_loss', test_stats['loss'], epoch)
-            with open('sun_seed.txt', mode='a') as f:
-                f.write(f'Epoch: {epoch + 1} -- Acc1: {test_stats["acc1"]:.3f}%')
-                f.write('\n')
-                f.write(f'The max_acc1 is: {max_acc1:.1f}%')
-                f.write('\n')
-                f.close()
 
 
 if __name__ == '__main__':
