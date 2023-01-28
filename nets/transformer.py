@@ -37,8 +37,7 @@ class Attention(nn.Module):
         ) if project_out else nn.Identity()
 
     def forward(self, x):
-        qkv = self.to_qkv(x).chunk(3, dim=-1)  # list of tensor
-        # batch_size, num_patches, inner_dim -> batch_size, heads, num_patches, dim_head
+        qkv = self.to_qkv(x).chunk(3, dim=-1)
         q, k, v = map(lambda t: rearrange(t, 'b n (h d) -> b h n d', h=self.heads), qkv)
 
         dots = torch.matmul(q, k.transpose(-1, -2)) * self.scale
