@@ -31,6 +31,9 @@ def get_args_parser():
                         help='path where to save, empty for no saving')
     parser.add_argument('--log_dir', default='./output_dir_pretrained',
                         help='path where to save tensorboard log')
+    parser.add_argument('--path',
+                        default='trial_1_train.txt',
+                        help='training file path')
     parser.add_argument('--train_file',
                         default='trial_1_train.txt',
                         help='training file path')
