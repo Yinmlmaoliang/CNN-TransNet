@@ -19,7 +19,6 @@ def train_one_epoch(model: torch.nn.Module, criterion: torch.nn.Module,
             rgb = batch[0]
             depth = batch[1]
             target = batch[-1]
-            # 传到device设备上
             rgb = rgb.to(device, non_blocking=True)
             depth = depth.to(device, non_blocking=True)
             targets = target.to(device, non_blocking=True)
