@@ -1,13 +1,10 @@
 # Cross-Level Multi-Modal Feature Learning with Transformer for RGB-D Object Recognition
-
 **CNN-TransNet** is an innovative end-to-end Transformer-based architecture integrated with convolutional neural networks (CNNs), designed specifically for RGB-D object recognition. Our approach has demonstrated state-of-the-art accuracy on three major datasets: Washington RGB-D Object Dataset (95.4%), JHUIT-50 (98.1%), and Object Clutter Indoor Dataset (94.7%), showcasing its effectiveness and superiority in the RGB-D object recognition domain.
-
 ![](img/figure1.png)
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
 - [Citations](#citations)
-
 ## Installation
 To install and run this project using a Conda environment, follow these steps:
 1. **Clone the Repository**
@@ -35,23 +32,16 @@ CNN-TransNet/
 │   ├── splits/           
 │   ├── rgbd-dataset/      # Dataset directory
 │   └── weights/           # Trained model weights
-│
 ├── img/                 
-│
 ├── nets/                  # Moel configurations
 │   ├── model.py           
 │   └── ...           
-│
 ├── utils/
 │   ├── train_one_epoch.py           
 │   └── ...
-│
 ├── demo.ipynb
-│
 ├── train.py              # Main script to train the model
-│
 ├── requirements.txt      # Dependency file
-│
 └── README.md             # Project README
 ```
 ### Application to One Input
@@ -73,14 +63,11 @@ rgbd-dataset/
 │   │   ├── apple_1_1_1_loc.txt
 │   │   └── ...           
 │   └── ...
-└
 ```
 ### Running the Training Script
 ```bash
 python train.py
 ```
-
-
 ## Citations
 If you find this work useful in your research, please consider citing:
 ```plaintext
