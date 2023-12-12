@@ -6,7 +6,6 @@ from einops import rearrange, repeat
 def pair(t):
     return t if isinstance(t, tuple) else (t, t)
 
-
 class PreNorm(nn.Module):
     def __init__(self, dim, fn):
         super(PreNorm, self).__init__()

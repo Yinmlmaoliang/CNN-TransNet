@@ -28,7 +28,6 @@ def evaluate(data_loader, model, device, epoch, epoch_step):
                 acc1, acc5 = accuracy(output, target, topk=(1, 5))
                 acc1_meter.update(acc1.item(), target.size(0))
                 loss_meter.update(loss.item(), target.size(0))
-
             pbar.set_postfix(**{'loss': loss_meter.avg,
                                 'acc1': acc1_meter.avg})
             pbar.update(1)

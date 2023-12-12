@@ -13,7 +13,6 @@ from utils.util import NativeScalerWithGradNormCount as NativeScaler
 def get_device():
     return torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-
 def get_args_parser():
     parser = argparse.ArgumentParser('CNN_TransNet', add_help=False)
     parser.add_argument('--image_size', default=224, type=int, help='image size')
