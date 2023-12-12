@@ -1,9 +1,6 @@
 import os
 import torch
 import argparse
-import sys
-sys.path.append('D:/Python project/CNN-TransNet/CNN-TransNet/nets')
-sys.path.append('D:/Python project/CNN-TransNet/CNN-TransNet/utils')
 from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
 from nets.model import Model
@@ -20,14 +17,14 @@ def get_device():
 def get_args_parser():
     parser = argparse.ArgumentParser('CNN_TransNet', add_help=False)
     parser.add_argument('--image_size', default=224, type=int, help='image size')
-    parser.add_argument('--batch_size', default=32, type=int, help='batch size')
+    parser.add_argument('--batch_size', default=16, type=int, help='batch size')
     parser.add_argument('--epochs', default=10, type=int)
     parser.add_argument('--num_workers', default=8, type=int, help='Number of workers for DataLoader')
     parser.add_argument('--data_type', default='colorized_depth')
     parser.add_argument('--optimizer_type', default='SGD', choices=['adam', 'SGD'], help='Optimizer type')
     parser.add_argument('--weight_decay', type=float, default=0.01, help='Weight decay')
     parser.add_argument('--learning_rate', type=float, default=0.001, help='Learning rate')
-    parser.add_argument('--dataset_dir', default='D:/Python project/CNN-TransNet', help='Log interval')
+    parser.add_argument('--dataset_dir', default='./data', help='Path for dataset')
     parser.add_argument('--output_dir', default='./output', help='Path for saving output')
     parser.add_argument('--log_dir', default='./output', help='Path for saving logs')
     parser.add_argument('--train_file', default='data/splits/trial_1_train.txt', help='Training file path')

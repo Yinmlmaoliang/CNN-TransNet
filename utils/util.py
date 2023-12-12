@@ -1,5 +1,5 @@
 import torch
-from torch._six import inf
+from math import inf
 
 
 class NativeScalerWithGradNormCount:

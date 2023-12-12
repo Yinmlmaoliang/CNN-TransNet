@@ -2,9 +2,13 @@ import torch
 import math
 import sys
 from typing import Iterable
-from utils.util import get_lr
 from timm.utils import accuracy, AverageMeter
 from tqdm import tqdm
+
+
+def get_lr(optimizer):
+    for param_group in optimizer.param_groups:
+        return param_group['lr']
 
 
 def train_one_epoch(model: torch.nn.Module, criterion: torch.nn.Module,
@@ -14,7 +18,7 @@ def train_one_epoch(model: torch.nn.Module, criterion: torch.nn.Module,
     acc1_meter = AverageMeter()
     loss_all = 0
 
-    with tqdm(total=epoch_step, desc=f'Epoch {epoch + 1}', postfix=dict, mininterval=0.3) as pbar:
+    with tqdm(total=epoch_step, desc=f'Train: ', postfix=dict, mininterval=0.3) as pbar:
         for data_iter_step, batch in enumerate(data_loader):
             rgb = batch[0]
             depth = batch[1]

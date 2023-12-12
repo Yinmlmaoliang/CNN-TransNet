@@ -1,17 +1,15 @@
 import torch
 import torch.nn as nn
-from extraction_rgb import extraction_rgb
-from extraction_depth import extraction_depth
-from mmfp import MMFPv1
-from mmfp import MMFPv2
-from transformer_encoder import Transformer
-
+from resnet_rgb import load_resnet_rgb_model
+from resnet_depth import load_resnet_depth_model
+from mmfp import MMFPv1, MMFPv2
+from transformer import Transformer
 
 class Model(nn.Module):
     def __init__(self):
         super(Model, self).__init__()
-        self.rgb = extraction_rgb(pretrained=True)
-        self.depth = extraction_depth(pretrained=True)
+        self.rgb = load_resnet_rgb_model(pretrained=True)
+        self.depth = load_resnet_depth_model(pretrained=True)
 
         self.level1 = MMFPv1(in_channels=64*2, out_channels=256)
         self.level2 = MMFPv2(in_channels=64*2, out_channels=256)
@@ -54,6 +52,6 @@ class Model(nn.Module):
 
         # feature enhance
         sequence = torch.cat((l1, l2, l3, l4, l5, l6, l7, l8, l9), dim=1)
-        out, x = self.transformer(sequence)
-        return out, x
+        output = self.transformer(sequence)
+        return output
 

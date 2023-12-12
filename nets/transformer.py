@@ -116,4 +116,4 @@ class Transformer(nn.Module):
         x = x.mean(dim=1) if self.pool == 'mean' else x[:, 0]
 
         x = self.to_latent(x)
-        return self.mlp_head(x), x
+        return self.mlp_head(x)

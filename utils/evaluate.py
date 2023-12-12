@@ -9,7 +9,7 @@ def evaluate(data_loader, model, device, epoch, epoch_step):
     loss_meter = AverageMeter()
     # switch to evaluation mode
     model.eval()
-    with tqdm(total=epoch_step, desc=f'Eval : Epoch {epoch + 1}', postfix=dict, mininterval=0.3) as pbar:
+    with tqdm(total=epoch_step, desc=f'Test: ', postfix=dict, mininterval=0.3) as pbar:
         for data_iter_step, batch in enumerate(data_loader):
             rgb = batch[0]
             depth = batch[1]
@@ -32,4 +32,4 @@ def evaluate(data_loader, model, device, epoch, epoch_step):
             pbar.set_postfix(**{'loss': loss_meter.avg,
                                 'acc1': acc1_meter.avg})
             pbar.update(1)
-    return acc1_meter.avg
+    return {'loss': loss_meter.avg, 'acc1': acc1_meter.avg}
