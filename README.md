@@ -1,6 +1,6 @@
 # Cross-Level Multi-Modal Feature Learning with Transformer for RGB-D Object Recognition
 
-**CNN-TransNet** is an innovative end-to-end Transformer-based architecture integrated with convolutional neural networks (CNNs), designed specifically for RGB-D object recognition. This model addresses the challenges of high inter-class similarity and poor-quality depth images in RGB-D sensors. By learning and relating multi-modal features at multiple levels, CNN-TransNet generates discriminative multi-modal feature representations. Additionally, it incorporates a multi-modal fusion and projection (MMFP) module to optimize the contribution of each modality, significantly improving recognition performance. Our approach has demonstrated state-of-the-art accuracy on three major datasets: Washington RGB-D Object Dataset (95.4%), JHUIT-50 (98.1%), and Object Clutter Indoor Dataset (94.7%), showcasing its effectiveness and superiority in the RGB-D object recognition domain.
+**CNN-TransNet** is an innovative end-to-end Transformer-based architecture integrated with convolutional neural networks (CNNs), designed specifically for RGB-D object recognition. Our approach has demonstrated state-of-the-art accuracy on three major datasets: Washington RGB-D Object Dataset (95.4%), JHUIT-50 (98.1%), and Object Clutter Indoor Dataset (94.7%), showcasing its effectiveness and superiority in the RGB-D object recognition domain.
 
 ![](img/figure1.png)
 ## Table of Contents
